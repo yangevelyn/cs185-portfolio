@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    color: green;
+}
+
+.nav-bar {
+    display: flex;
+}
+
+.nav-bar > .tab {
+    margin: 1rem;
+}
+
+.main-body {
+    display: flex;
+    margin: 1rem;
+}
+
+.main-body img{
+    width: 30vw;
+    padding-right: 2rem;
+}
