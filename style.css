@@ -97,7 +97,7 @@
     max-height: 100%;
 }
 
-.project video {
+.project .video {
     /* without these lines, img was making the project grid really long (because of large size of original image) */
     object-fit: scale-down;
     width: 100%;
