@@ -1,22 +1,121 @@
 .header {
     display: flex;
     color: green;
+    margin-left: 2rem;
 }
 
 .nav-bar {
     display: flex;
+    margin-left: 2rem;
 }
 
 .nav-bar > .tab {
     margin: 1rem;
 }
 
-.main-body {
-    display: flex;
-    margin: 1rem;
+.content {
+    margin-left: 2rem;
 }
 
-.main-body img{
+.content h2 {
+    font-size: 2rem;
+    margin-bottom: 0rem;
+}
+
+.main-body {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+}
+
+.main-body .image {
     width: 30vw;
     padding-right: 2rem;
+}
+
+.main-body .description {
+    /* https://stackoverflow.com/questions/43999732/how-to-make-a-fixed-column-in-css-using-css-grid-layout */
+    position: sticky;
+    top: 10px;
+    width: 30vw;
+    height: 100vh;
+    /* margin-top: 20rem; */
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.about-grid .grid-item {
+    /* justify-content: center; */
+    text-align: center;
+    margin: 2.5vw;
+}
+
+.about-grid .grid-img {
+    text-align: center; /* center an image in a grid */
+    height: 35vh;
+}
+
+.about-grid .grid-item p {
+    text-align: center;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 65vw;
+    padding-top: 5vh;
+}
+
+.project {
+    justify-self: center; /* center this project within the project-grid */
+    display: grid;
+    grid-template-columns: auto auto;
+    /* overflow: auto; */
+    width: 50vw;
+    height: 40vh;
+    /* align-items: stretch; */
+}
+
+.project .proj-desc {
+    justify-content: center;
+    text-align: center;
+    grid-column: span 2;
+}
+
+.project .grid-item {
+    /* overflow: hidden; */
+    max-height: 30vh;
+    text-align: center;
+}
+
+.project .img {
+    /* without these lines, img was making the project grid really long (because of large size of original image) */
+    object-fit: scale-down;
+    width: 100%;
+    max-height: 100%;
+}
+
+.project .video {
+    /* without these lines, img was making the project grid really long (because of large size of original image) */
+    object-fit: scale-down;
+    width: 100%;
+    max-height: 100%;
+}
+
+.iframe-container {
+    overflow: hidden;
+    /* // Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625) */
+    padding-top: 56.25%;
+    position: relative;
+}
+   
+.iframe-container iframe {
+    border: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: -10vh;
+    width: 100%;
 }
