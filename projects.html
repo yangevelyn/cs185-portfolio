@@ -4,25 +4,34 @@
         <meta charset="utf-8">
         <title>Projects - Evelyn's Website</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet"> 
+        <script src="script.js"></script>
     </head>
     <body>
-        <header class="header">
-            <h1>Welcome to My Website!</h1>
-        </header>
-        <div class="nav-bar">
-            <div class="tab">
-                <a href="./index.html">Home</a>
+        <div>
+            <header class="header">
+                <h1>
+                    <a href="./index.html">
+                        E.
+                    </a>
+                </h1>
+            </header>
+            <div class="nav-bar">
+                <div class="tab">
+                    <a href="./index.html">HOME</a>
+                </div>
+                <div class="tab">
+                    <!-- placeholder, leads back to index -->
+                    <a href="./about.html">ABOUT</a>
+                </div>
+                <div class="tab active">
+                    <a href="./projects.html">PROJECTS</a>
+                </div>
+                <div class="tab">
+                    <a href="./resume.html">RESUME</a>
+                </div>
             </div>
-            <div class="tab">
-                <!-- placeholder, leads back to index -->
-                <a href="./about.html">About</a>
-            </div>
-            <div class="tab">
-                <a href="./projects.html">Projects</a>
-            </div>
-            <div class="tab">
-                <a href="./resume.html">Resume</a>
-            </div>
+            <hr>
         </div>
         <div class="content">
             <div class="main-body">    
@@ -42,11 +51,12 @@
                                 <p>Live Demo</p>
                             </a>
                         </div>
-                        <div class="grid-item">
+                        <div class="grid-item" onclick="openLightbox(document.getElementById('vid').src, true)">
                             <!-- <video controls>
                                 <source src="videos/spotifynd-friends.mov" type="video/mp4">
                             </video> -->
-                            <iframe class="video" src="https://drive.google.com/file/d/1BenI3Yg_eYEW0u22Vl5G5rNWqckjEPck/preview" width="640" height="480"></iframe>
+                            <iframe id="vid" class="video" src="https://drive.google.com/file/d/1BenI3Yg_eYEW0u22Vl5G5rNWqckjEPck/preview" 
+                            width="640" height="480"></iframe>
                             <p>Video</p>
                         </div>
                         <!-- <img src="images/spotify-logo.jpg" class="img">
@@ -54,14 +64,51 @@
                         <!-- demo -->
                     </div>
                 </div>
-                <div class="description">
+                <div class="projs-desc">
                     <div>
                         <h2>Projects</h2>
                     </div>
                     <p>Here's some of the stuff I've done!
                     </p>
                 </div>
+                <div id="lightbox">
+                    <div>
+                        <iframe id="lightbox-vid" class="video" src="https://drive.google.com/file/d/1BenI3Yg_eYEW0u22Vl5G5rNWqckjEPck/preview" width="640" height="480"></iframe>
+                    </div>
+                </div>
+                <div>
+                    <button id="right-to-top" onclick="toTop()">Back to Top</button>
+                </div>
             </div>
         </div>
+        <script>
+            console.log(document.getElementById("vid").contentDocument);
+            document.getElementById("vid").contentDocument.addEventListener("click", e => {
+                console.log(e.target);
+            });
+            window.onclick = (e) => {
+                console.log(e.target);
+            }
+
+            const btn = document.getElementById("right-to-top");
+            var d = document.documentElement;
+            var b = document.body;
+
+            window.onscroll = () => {
+                st = "scrollTop";
+                sh = "scrollHeight";
+
+                if(d[st]/d[sh] > 0.1 || b[st]/b[sh] > 0.1){
+                    btn.style.display = "block";
+                } else{
+                    btn.style.display = "none";
+                }
+            }
+
+            function toTop(){
+                b.scrollTop = 0;
+                d.scrollTop = 0;
+            }
+        </script>
     </body>
 </html>

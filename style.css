@@ -1,7 +1,32 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Lora', serif;
+    /* background-color: rgb(232, 232, 232); */
+    /* background: linear-gradient(90deg, rgba(232,232,232,1) 0%, rgba(248,248,248,1) 100%); */
+}
+
+body {
+
+    background: linear-gradient(90deg, rgba(232,232,232,1) 0%, rgba(248,248,248,1) 100%);
+}
+
 .header {
     display: flex;
-    color: green;
+    color: rgb(250, 169, 8);
     margin-left: 2rem;
+    font-size: 48px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.header h1{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.header h1 a {
+    text-decoration: none;
+    color: rgb(250, 169, 8);
 }
 
 .nav-bar {
@@ -9,12 +34,56 @@
     margin-left: 2rem;
 }
 
-.nav-bar > .tab {
-    margin: 1rem;
+.nav-bar .tab {
+    font-size: 24px;
+    margin-right: 1.5rem;
+}
+
+.nav-bar :hover {
+    color: lightgray;
+}
+
+.nav-bar a:link {
+    text-decoration: none;
+}
+  
+.nav-bar a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-bar a:hover {
+    text-decoration: none;
+    /* color: rgb(255, 233, 190); */
+    color: rgb(51, 11, 11);
+}
+
+.nav-bar .active a{
+    color: rgb(250, 169, 8);
+}
+
+hr {
+    margin-left: 3rem;
+    width: 25.5rem;
+    height: 1px;
+    border: 0px;
+    /* background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(240,240,240,1) 100%); */
+    background: rgb(18, 18, 18, 0.75)
+}
+
+/* HOME PAGE */
+.home-text {
+    position: absolute;
+    font-size: 40px;
+    text-align: right;
+    bottom: 5vh;
+    right: 5vw;
+    color: rgb(48, 48, 48);
 }
 
 .content {
     margin-left: 2rem;
+    margin-right: 2rem;
 }
 
 .content h2 {
@@ -22,9 +91,11 @@
     margin-bottom: 0rem;
 }
 
+/* ABOUT */
 .main-body {
-    display: grid;
-    grid-template-columns: 3fr 7fr;
+    display: flex;
+    /* grid-template-columns: 4fr 6fr;
+    grid-gap: 1rem; */
 }
 
 .main-body .image {
@@ -34,34 +105,52 @@
 
 .main-body .description {
     /* https://stackoverflow.com/questions/43999732/how-to-make-a-fixed-column-in-css-using-css-grid-layout */
-    position: sticky;
-    top: 10px;
-    width: 30vw;
-    height: 100vh;
-    /* margin-top: 20rem; */
+    position: fixed;
+    top: 75%;
+    /* bottom: 2vh; */
+    /* height: 95vh; */
+    max-width: 35vw;
 }
 
 .about-grid {
+    position: absolute;
+    margin-left: 40vw;
+    margin-right: 2vw;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-content: center;
+    align-items: center;
+    justify-self: center;
+    grid-gap: 1rem;
 }
 
 .about-grid .grid-item {
     /* justify-content: center; */
     text-align: center;
-    margin: 2.5vw;
+    width: 100%;
 }
 
 .about-grid .grid-img {
     text-align: center; /* center an image in a grid */
-    height: 35vh;
+    object-fit: cover;
+    /* height: 35vh; */
+    max-width: 100%;
+    max-height: 65vh;
+    padding: 1rem;
 }
 
 .about-grid .grid-item p {
     text-align: center;
 }
 
+/* PROJECTS */
+.projs-desc {
+    top: 75%;
+    max-width: 35vw;
+}
+
 .projects-grid {
+    order: -1;
     display: grid;
     grid-template-columns: 1fr;
     width: 65vw;
@@ -71,7 +160,7 @@
 .project {
     justify-self: center; /* center this project within the project-grid */
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat(auto-fit, auto);
     /* overflow: auto; */
     width: 50vw;
     height: 40vh;
@@ -100,22 +189,148 @@
 .project .video {
     /* without these lines, img was making the project grid really long (because of large size of original image) */
     object-fit: scale-down;
-    width: 100%;
+    /* width: 100%; */
+    max-width: 100%;
     max-height: 100%;
+    min-height: 50%;
+}
+
+/* RESUME */
+.resume-desc {
+    order: -1;
 }
 
 .iframe-container {
-    overflow: hidden;
+    /* overflow: hidden; */
     /* // Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625) */
-    padding-top: 56.25%;
+    /* padding-top: -10%; */
+    /* padding-bottom: 0%; */
+    padding-left: 5vw;
+    padding-right: 3vw;
     position: relative;
+    min-width: 70%;
 }
    
 .iframe-container iframe {
     border: 0;
-    height: 100%;
+    height: 100vh;
     left: 0;
-    position: absolute;
-    top: -10vh;
+    /* position: absolute; */
+    /* top: -10vh; */
     width: 100%;
+}
+
+#lightbox {
+    /* display: none;
+    background-color: black; */
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+#lightbox div {
+    margin: auto;
+}
+
+#lightbox img {
+    /* display: block;
+    margin: auto; */
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    height: 65vh;
+}
+
+#to-top {
+    /* order: -1; */
+    display: none;
+    position: fixed;
+    bottom: 90vh;
+    left: 2rem;
+}
+
+#right-to-top {
+    display: none;
+    position: fixed;
+    bottom: 10vh;
+    right: 5vw;
+}
+
+#to-top:hover {
+    cursor: pointer;
+}
+
+@media (max-height: 600px) {
+    .main-body .description {
+        position: relative;
+        top: 65%;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-body {
+        /* grid-template-columns: 1fr; */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-body .description {
+        top: 0;
+        position: relative;
+        min-width: 100%;
+        max-height: 20%;
+        height: 0%;
+    }
+
+    .main-body .about-grid {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .about-grid {
+        position: unset;
+        margin-left: unset;
+        margin-right: unset;
+        display: unset;
+        /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+        align-content: center;
+        align-items: center;
+        justify-self: center;
+        /* grid-gap: 1rem; */
+    }
+
+    .projs-desc {
+        order: -1;
+        position: relative;
+        min-width: 100%;
+        max-height: 20%;
+        height: 0%;
+    }
+
+    .projects-grid {
+        order: unset;
+    }
+}
+
+@media (max-width: 500px) {
+    .nav-bar .tab {
+        font-size: 4.5vw;
+    }
+
+    hr {
+        width: 0%;
+        margin-left: none;
+        margin-right: 100%;
+    }
 }
