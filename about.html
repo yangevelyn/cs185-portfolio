@@ -4,28 +4,41 @@
         <meta charset="utf-8">
         <title>About - Evelyn's Website</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet"> 
+        <script src="script.js"></script>
     </head>
     <body>
-        <header class="header">
-            <h1>Welcome to My Website!</h1>
-        </header>
-        <div class="nav-bar">
-            <div class="tab">
-                <a href="./index.html">Home</a>
+        <div>
+            <header class="header">
+                <h1>
+                    <a href="./index.html">
+                        E.
+                    </a>
+                </h1>
+            </header>
+            <div class="nav-bar">
+                <div class="tab">
+                    <a href="./index.html">HOME</a>
+                </div>
+                <div class="tab active">
+                    <!-- placeholder, leads back to index -->
+                    <a href="./about.html">ABOUT</a>
+                </div>
+                <div class="tab">
+                    <a href="./projects.html">PROJECTS</a>
+                </div>
+                <div class="tab">
+                    <a href="./resume.html">RESUME</a>
+                </div>
             </div>
-            <div class="tab">
-                <!-- placeholder, leads back to index -->
-                <a href="./about.html">About</a>
-            </div>
-            <div class="tab">
-                <a href="./projects.html">Projects</a>
-            </div>
-            <div class="tab">
-                <a href="./resume.html">Resume</a>
-            </div>
+            <hr>
         </div>
         <div class="content">
             <div class="main-body">
+                <div>
+                    <!-- <button id="to-top" onclick="toTop()">Back to Top</button> -->
+                    <input type="image" src="images/back-to-top.svg" id="to-top" onclick="toTop()"/>
+                </div>
                 <div class="description">
                     <div>
                         <h2>More About Me</h2>
@@ -52,7 +65,45 @@
                         <p>reading...</p>
                     </div>
                 </div>
+                <div id="lightbox">
+                    <div>
+                        <img src="images/wave.png" id="lightbox-img">
+                    </div>
+                </div>
             </div>
         </div>
+        <script>
+            // https://stackoverflow.com/questions/4588759/how-do-you-set-a-javascript-onclick-event-to-a-class-with-css
+            // https://stackoverflow.com/questions/5743863/onclick-gets-fired-without-clicking
+            window.onload = function(){
+                const images = document.getElementsByTagName('img');
+                for(var i = 0; i < images.length; i++){
+                    const image = images[i];
+                    image.onclick = function(){
+                        openLightbox(this.src, false);
+                    }
+                }
+            }
+
+            const btn = document.getElementById("to-top");
+            var d = document.documentElement;
+            var b = document.body;
+
+            window.onscroll = () => {
+                st = "scrollTop";
+                sh = "scrollHeight";
+
+                if(d[st]/d[sh] > 0.2 || b[st]/b[sh] > 0.2){
+                    btn.style.display = "block";
+                } else{
+                    btn.style.display = "none";
+                }
+            }
+
+            function toTop(){
+                b.scrollTop = 0;
+                d.scrollTop = 0;
+            }
+        </script>
     </body>
 </html>
