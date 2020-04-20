@@ -14,7 +14,7 @@ body {
     display: flex;
     color: rgb(250, 169, 8);
     margin-left: 2rem;
-    font-size: 48px;
+    font-size: 42px;
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -32,10 +32,12 @@ body {
 .nav-bar {
     display: flex;
     margin-left: 2rem;
+    z-index: 1;
+    max-width: 50%;
 }
 
 .nav-bar .tab {
-    font-size: 24px;
+    font-size: 1.75vw;
     margin-right: 1.5rem;
 }
 
@@ -45,6 +47,7 @@ body {
 
 .nav-bar a:link {
     text-decoration: none;
+    color: black;
 }
   
 .nav-bar a:visited {
@@ -56,6 +59,7 @@ body {
     text-decoration: none;
     /* color: rgb(255, 233, 190); */
     color: rgb(51, 11, 11);
+    cursor: pointer;
 }
 
 .nav-bar .active a{
@@ -64,7 +68,7 @@ body {
 
 hr {
     margin-left: 3rem;
-    width: 25.5rem;
+    width: 27.5vw;
     height: 1px;
     border: 0px;
     /* background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(240,240,240,1) 100%); */
@@ -74,11 +78,17 @@ hr {
 /* HOME PAGE */
 .home-text {
     position: absolute;
-    font-size: 40px;
+    font-size: 6vh;
     text-align: right;
     bottom: 5vh;
     right: 5vw;
     color: rgb(48, 48, 48);
+    max-height: 70%;
+    overflow: scroll;
+}
+
+.home-text p {
+    margin-top: 0;
 }
 
 .content {
@@ -152,8 +162,9 @@ hr {
 .projects-grid {
     order: -1;
     display: grid;
-    grid-template-columns: 1fr;
-    width: 65vw;
+    grid-template-columns: 65vw;
+    height: 100vh;
+    /* width: 65vw; */
     padding-top: 5vh;
 }
 
@@ -175,7 +186,12 @@ hr {
 
 .project .grid-item {
     /* overflow: hidden; */
-    max-height: 30vh;
+    /* max-height: 30vh; */
+    /* to fix chrome issue must set an explicit height for parent for max-height: 100% to work in child*/
+    /* https://stackoverflow.com/questions/14262938/child-with-max-height-100-overflows-parent */
+    height: 25vh; 
+    /* min-height: 25vh;
+    max-height: 50vh; */
     text-align: center;
 }
 
@@ -183,6 +199,7 @@ hr {
     /* without these lines, img was making the project grid really long (because of large size of original image) */
     object-fit: scale-down;
     width: 100%;
+    min-height: 50%;
     max-height: 100%;
 }
 
@@ -255,15 +272,16 @@ hr {
     /* order: -1; */
     display: none;
     position: fixed;
-    bottom: 90vh;
-    left: 2rem;
+    bottom: 5vh;
+    right: 2rem;
+    z-index: 1;
 }
 
-#right-to-top {
+#left-to-top {
     display: none;
     position: fixed;
-    bottom: 10vh;
-    right: 5vw;
+    bottom: 5vh;
+    left: 2rem;
 }
 
 #to-top:hover {
@@ -324,7 +342,12 @@ hr {
 }
 
 @media (max-width: 500px) {
-    .nav-bar .tab {
+    .nav-bar {
+        margin-left: 5vw;
+        justify-content: left;
+    }
+
+    .nav-bar .tab{
         font-size: 4.5vw;
     }
 

@@ -45,6 +45,30 @@
                     ></iframe>
                 </div>
             </div>
+            <div>
+                <input type="image" src="images/back-to-top.svg" id="left-to-top" onclick="toTop()"/>
+            </div>
         </div>
+        <script>
+            const btn = document.getElementById("left-to-top");
+            var d = document.documentElement;
+            var b = document.body;
+
+            window.onscroll = () => {
+                st = "scrollTop";
+                sh = "scrollHeight";
+
+                if(d[st]/d[sh] > 0.1 || b[st]/b[sh] > 0.1){
+                    btn.style.display = "block";
+                } else{
+                    btn.style.display = "none";
+                }
+            }
+
+            function toTop(){
+                b.scrollTop = 0;
+                d.scrollTop = 0;
+            }
+        </script>
     </body>
 </html>
